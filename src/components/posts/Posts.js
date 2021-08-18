@@ -8,7 +8,7 @@ class Posts extends Component {
   constructor(props) {
     super(props);
 
-    // Sets up our initial state
+
     this.state = {
       error: false,
       hasMore: true,
@@ -16,7 +16,7 @@ class Posts extends Component {
       posts: [],
     };
 
-    // Binds our scroll event handler
+
     window.onscroll = debounce(() => {
       const {
         loadposts,
@@ -27,13 +27,10 @@ class Posts extends Component {
         },
       } = this;
 
-      // Bails early if:
-      // * there's an error
-      // * it's already loading
-      // * there's nothing left to load
+
       if (error || isLoading || !hasMore) return;
 
-      // Checks that the page has scrolled to the bottom
+
       if (
         window.innerHeight + document.documentElement.scrollTop
         === document.documentElement.offsetHeight
@@ -44,7 +41,7 @@ class Posts extends Component {
   }
 
   componentWillMount() {
-    // Loads some posts on initial load
+
     this.loadposts();
   }
 
@@ -53,7 +50,7 @@ class Posts extends Component {
       request
         .get('https://randomuser.me/api/?results=10')
         .then((results) => {
-          // Creates a massaged array of post data
+
           const nextPosts = results.body.results.map(post => ({
             email: post.email,
             name: Object.values(post.name).join(' '),
@@ -62,11 +59,9 @@ class Posts extends Component {
             uuid: post.login.uuid,
           }));
 
-          // Merges the next posts into our existing posts
+
           this.setState({
-            // Note: Depending on the API you're using, this value may
-            // be returned as part of the payload to indicate that there
-            // is no additional data to be loaded
+
             hasMore: (this.state.posts.length < 100),
             isLoading: false,
             posts: [

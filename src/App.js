@@ -15,8 +15,8 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo noUserSelect" alt="logo" />
         <div className="btns">
-          <div className="btn undefault noUserSelect"><span>Login</span></div>
-          <div className="btn noUserSelect"><span>Sign Up</span></div>
+          <div className="btn undefault noUserSelect" id="btnlogin"><span>Login</span></div>
+          <div className="btn noUserSelect" id="btnSignUp"><span>Sign Up</span></div>
         </div>
         <div className="paraph noUserSelect">
           <p className="noUserSelect">Desliza para ver todas la publicaciones. 
